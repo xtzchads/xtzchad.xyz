@@ -83,7 +83,7 @@
         sortedAccounts.forEach(account => {
           const alias = account.alias || account.address;
           const balance = account.balance;
-          const url = `https://kukai.api.tzkt.io/${account.address}`;
+          const url = `https://tzkt.io/${account.address}`;
           
           const row = document.createElement('tr');
           row.innerHTML = `
