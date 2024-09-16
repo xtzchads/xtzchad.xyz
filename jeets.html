@@ -68,6 +68,10 @@
     .loader.hidden {
       display: none;
     }
+    .note {
+      color: red;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -78,6 +82,7 @@
         <th>Alias (or Address)</th>
         <th>Balance (tez)</th>
         <th>URL</th>
+        <th>Note</th>
       </tr>
     </thead>
     <tbody>
@@ -101,10 +106,14 @@
           const url = `https://tzkt.io/${account.address}`;
           
           const row = document.createElement('tr');
+          const isSpecialAddress = account.address === 'tz1cSHz482Fc4LUhETe4gQxv5xUwH3n7wb9E';
+          const note = isSpecialAddress ? '<span class="note">Not a jeet!</span>' : '';
+          
           row.innerHTML = `
             <td>${alias}</td>
             <td>${Intl.NumberFormat().format(balance / 1000000)}</td>
             <td><a href="${url}" target="_blank">${url}</a></td>
+            <td>${note}</td>
           `;
           tableBody.appendChild(row);
         });
