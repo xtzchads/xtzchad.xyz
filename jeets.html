@@ -110,10 +110,9 @@
           const note = isSpecialAddress ? '<span class="note">Not a jeet!</span>' : '';
           
           row.innerHTML = `
-            <td>${alias}</td>
+            <td>${alias+note}</td>
             <td>${Intl.NumberFormat().format(balance / 1000000)}</td>
             <td><a href="${url}" target="_blank">${url}</a></td>
-            <td>${note}</td>
           `;
           tableBody.appendChild(row);
         });
