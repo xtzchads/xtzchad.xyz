@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Accounts Table</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
@@ -54,10 +57,22 @@
         text-align: left;
       }
     }
+    .loader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 18px;
+      color: #555;
+    }
+    .loader.hidden {
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <table id="accounts-table">
+  <div id="loader" class="loader">Loading data...</div>
+  <table id="accounts-table" class="hidden">
     <thead>
       <tr>
         <th>Alias (or Address)</th>
@@ -93,9 +108,14 @@
           `;
           tableBody.appendChild(row);
         });
+        
+        // Hide loader and show table
+        document.getElementById('loader').classList.add('hidden');
+        document.getElementById('accounts-table').classList.remove('hidden');
       })
       .catch(error => {
         console.error('Error fetching data:', error);
+        document.getElementById('loader').innerText = 'Error loading data. Please try again later.';
       });
   </script>
 </body>
